@@ -103,8 +103,10 @@ host_key_checking = False
     dest: "/webpage/"
 ```
 **Job3:** Pull the httpd server image from the Docker Hub
+
 **Job4:** Run the httpd container and expose it to the public
 - Docker container is exposed to the public at port 8082
+
 **Job5:** Copying the html code in the default directory for the apache webserver and starting the web server
 - default directory for web hosting in httpd image : /usr/local/apache2/htdocs
 ```
