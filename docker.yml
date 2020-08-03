@@ -1,0 +1,41 @@
+- name: Configuration of web-server using docker
+  hosts: docker
+  tasks:
+    - name: Docker Repository
+      yum_repository:
+        name: docker
+        description: docker yum repo
+        baseurl: https://download.docker.com/linux/centos/7/x86_64/stable
+        gpgcheck: no
+    - name: Docker Installation
+      package:
+        name: "docker-ce-18.06.3.ce-3.el7.x86_64"
+        state: present
+    - name: Starting docker service
+      service:
+        name: "docker"
+        state: started
+        enabled: yes
+    - name: Installing pip package
+      command: yum install python3-pip -y
+    - name: Docker SDK for python
+      command: pip3 install docker
+    - name: Creating directory for webpages
+      file:
+        path: /webpage
+        state: directory
+    - name: Copying webpage to the directory
+      copy:
+        src: "/mycode/index.html"
+        dest: "/webpage/"
+    - name: Launching docker container
+      docker_container:
+        name: web_os
+        image: httpd
+        state: started
+        exposed_ports:
+          - "80"
+        ports:
+          - "8082:80"
+        volumes:
+          - /webpage:/usr/local/apache2/htdocs
