@@ -1,4 +1,4 @@
-## Automating configuration management using Ansible
+## Automating configuration management of docker using Ansible
 *In this project fully configured docker container(O.S i.e. httpd) is launched to host the website using Ansible.*
 
 Automation is crucial these days, with IT environments that are too complex and often need to scale too quickly for system administrators and developers to keep up if they had to do everything manually. Automation simplifies complex tasks, not just making developers’ jobs more manageable but allowing them to focus attention on other tasks that add value to an organization. In other words, it frees up time and increases efficiency.
